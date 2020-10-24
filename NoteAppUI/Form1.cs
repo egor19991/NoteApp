@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NoteApp;
 
 namespace NoteAppUI
 {
@@ -15,12 +16,12 @@ namespace NoteAppUI
         public Form1()
         {
             InitializeComponent();
+            var project = new Project();
         }
-        //comment
-        //comment2
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+       
     }
 }
