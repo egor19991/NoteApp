@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Remoting.Messaging;
 
 
 namespace NoteApp
@@ -7,8 +8,7 @@ namespace NoteApp
     {
         private string _name;
         private string _text;
-        private DateTime _timeChange = DateTime.Now;
-        readonly DateTime timeCreate = DateTime.Now;
+        readonly DateTime _created = DateTime.Now;
 
         public enum NoteCategory
         {
@@ -46,10 +46,11 @@ namespace NoteApp
                     {
                         _name = value;
                     }
-                    TimeChange = DateTime.Now;
+                    Modifated = DateTime.Now;
                 }
             }
         }
+
         /// <summary>
         /// Возвращает и задает категорию заметки.
         /// </summary>
@@ -69,7 +70,7 @@ namespace NoteApp
                 else
                 {
                     _text = value;
-                    TimeChange = DateTime.Now;
+                    Modifated = DateTime.Now;
                 }
             }
         }
@@ -77,23 +78,14 @@ namespace NoteApp
         /// <summary>
         /// Возвращает и задает время создания заметки.
         /// </summary>
-        public DateTime TimeCreate
+        public DateTime Created
         {
-            get { return timeCreate; }
+            get { return _created; }
         }
         /// <summary>
         /// Метод, выполняющий смену даты изменения.
         /// </summary>
-        public DateTime TimeChange {
-            get
-            {
-                return _timeChange;
-            }
-            set
-            {
-                _timeChange = DateTime.Now;
-            }
-        }
+        public DateTime Modifated {get; set; }
 
         
     }

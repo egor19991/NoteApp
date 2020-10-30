@@ -3,7 +3,7 @@
 
 namespace NoteApp
 {
-    public class ManagerProject
+    public class ProjectManager
     {
         
     }

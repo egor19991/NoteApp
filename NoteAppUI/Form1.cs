@@ -18,7 +18,7 @@ namespace NoteAppUI
             InitializeComponent();
             var note = new Note();
             note.Name = "Д1 — серия дизель-поездов.";
-            Console.WriteLine("Дата создания " + note.Name);
+            Console.WriteLine("Дата создания " + note.Created);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
