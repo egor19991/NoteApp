@@ -16,7 +16,9 @@ namespace NoteAppUI
         public Form1()
         {
             InitializeComponent();
-            var project = new Project();
+            var note = new Note();
+            note.Name = "Д1 — серия дизель-поездов.";
+            Console.WriteLine("Дата создания " + note.Name);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -24,4 +26,5 @@ namespace NoteAppUI
         }
        
     }
+
 }
