@@ -14,11 +14,7 @@ namespace NoteApp
     /// </summary>
     public static class ProjectManager
     {
-        /// <summary>
-        /// Путь для сохранения файла.
-        /// </summary>
-        public static string path { get; set; }
-
+        
         /// <summary>
         /// Метод для сохранения данных в файл.
         /// </summary>
