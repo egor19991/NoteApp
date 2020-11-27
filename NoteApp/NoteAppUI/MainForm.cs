@@ -34,9 +34,9 @@ namespace NoteAppUI
             Console.WriteLine(n2.Name);
             _project.Notes.Add(n2);
             _project.Notes.Add(not);
-            ProjectManager.SaveToFile(_project);
+            ProjectManager.SaveToFile(_project, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt");
             Console.WriteLine(n2.Name);
-            _project = ProjectManager.LoadToFile();
+            _project = ProjectManager.LoadToFile(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt");
             
         }
         

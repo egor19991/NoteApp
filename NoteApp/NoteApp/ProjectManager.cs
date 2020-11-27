@@ -17,12 +17,12 @@ namespace NoteApp
         /// <summary>
         /// Путь для сохранения файла.
         /// </summary>
-        static string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+ @"\json.txt";
-        
+        public static string path { get; set; }
+
         /// <summary>
         /// Метод для сохранения данных в файл.
         /// </summary>
-        public static void SaveToFile(Project project)
+        public static void SaveToFile(Project project, string path)
         {
             
             // С сайта https://www.newtonsoft.com/json/help/html/SerializeWithJsonSerializerToFile.htm + ctrl+c с занятия serialize
@@ -59,7 +59,7 @@ namespace NoteApp
         /// <summary>
         /// Метод для считывания данных из файла. Если файл не найден, то возвращатся пустой экземпляр Project.
         /// </summary>
-        public static Project LoadToFile()
+        public static Project LoadToFile(string path)
         {
             //Проверка существование файла
            if (File.Exists(path))
