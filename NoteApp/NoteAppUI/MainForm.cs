@@ -19,6 +19,9 @@ namespace NoteAppUI
        public MainForm()
         {
             InitializeComponent();
+            this.Text = "NoteApp";
+            this.Size = new Size(400, 250);
+            
             Note not = new Note();
             not.Name = "Д1 — серия дизель-поездов, строившаяся ";
             not.Text = "Всего было построено 605 составов. Конструкционно Д1 являлись усовершенствованной версией дизель-поездов серии Д и" +
@@ -31,15 +34,12 @@ namespace NoteAppUI
             Console.WriteLine(n2.Name);
             _project.Notes.Add(n2);
             _project.Notes.Add(not);
-            //ProjectManager.SaveToFile(_project);
+            ProjectManager.SaveToFile(_project);
             Console.WriteLine(n2.Name);
-            _project = ProjectManager.ReturnToFile();
+            _project = ProjectManager.LoadToFile();
             
         }
-
-
         
-
         private void Form1_Load(object sender, EventArgs e)
         {
 

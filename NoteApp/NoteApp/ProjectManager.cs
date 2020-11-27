@@ -59,7 +59,7 @@ namespace NoteApp
         /// <summary>
         /// Метод для считывания данных из файла. Если файл не найден, то возвращатся пустой экземпляр Project.
         /// </summary>
-        public static Project ReturnToFile()
+        public static Project LoadToFile()
         {
             //Проверка существование файла
            if (File.Exists(path))
@@ -77,10 +77,6 @@ namespace NoteApp
                     serializer.Formatting = Formatting.Indented;
                     Project project2 = (Project) serializer.Deserialize(file, typeof(Project));
                 }
-
-                string json = JsonConvert.SerializeObject(project1, Formatting.Indented);
-                Console.WriteLine(json);
-
                 return project1;
             }
            else

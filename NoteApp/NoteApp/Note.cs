@@ -25,7 +25,7 @@ namespace NoteApp
         /// <summary>
         /// Переменная с датой изменения заметки.
         /// </summary>
-        private DateTime _modefited;
+        private DateTime _modified;
 
         /// <summary>
         /// Переменная с категорией заметки.
@@ -42,7 +42,7 @@ namespace NoteApp
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException("Длинна сторики должна быть меньше 50, а была " + value.Length);
+                    throw new ArgumentException("Длинна заголовка меньше 50, а " + value.Length);
                 }
                 else
                 {
@@ -54,7 +54,7 @@ namespace NoteApp
                     {
                         _name = value;
                     }
-                    _modefited=DateTime.Now;
+                    _modified=DateTime.Now;
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace NoteApp
             set
             {
                 _category = value;
-                _modefited = DateTime.Now;
+                _modified = DateTime.Now;
             }
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace NoteApp
                 {
                     _text = value;
                 }
-                _modefited = DateTime.Now;
+                _modified = DateTime.Now;
             }
         }
 
@@ -102,10 +102,10 @@ namespace NoteApp
         /// <summary>
         /// Вовращает время изменения заметки.
         /// </summary>
-        public DateTime Modifated
+        public DateTime Modified
         {
-            get { return _modefited; }
-        }
+            get { return _modified; }
+            }
 
         /// <summary>
         /// Метод для клонирования заметки
@@ -114,7 +114,7 @@ namespace NoteApp
         {
             return new Note
             {
-                Name = this.Name, Category = this.Category,  Text = this.Text
+                Name = this.Name, Category = this.Category,  Text = this.Text,
             };
         }
 
