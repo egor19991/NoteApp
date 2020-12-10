@@ -22,10 +22,13 @@ namespace NoteAppUI
             this.Text = "NoteApp";
             this.Size = new Size(800, 480);
             _project = ProjectManager.LoadToFile(ProjectManager.DefaultPath);
-            
-            ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
-            
-            
+           foreach (var item in _project.Notes)
+            {
+                NoteListBox.Items.Add(item.Name);
+            }
+
+
+
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -33,7 +36,7 @@ namespace NoteAppUI
 
         }
 
-        
+       
     }
 
 }
