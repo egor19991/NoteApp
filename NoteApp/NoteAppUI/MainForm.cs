@@ -20,7 +20,7 @@ namespace NoteAppUI
         {
             InitializeComponent();
             this.Text = "NoteApp";
-           // this.Size = new Size(400, 250);
+            this.Size = new Size(800, 480);
             _project = ProjectManager.LoadToFile(ProjectManager.DefaultPath);
             
             ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
