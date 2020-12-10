@@ -20,7 +20,7 @@ namespace NoteApp
         /// <summary>
         ///  Переменная с датой создания заметки.
         /// </summary>
-        readonly DateTime _created = DateTime.Now;
+        readonly private DateTime _created = DateTime.Now;
 
         /// <summary>
         /// Переменная с датой изменения заметки.
@@ -42,7 +42,7 @@ namespace NoteApp
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException("Длинна заголовка меньше 50, а " + value.Length);
+                    throw new ArgumentException("Длина заголовка меньше 50, а " + value.Length);
                 }
                 else
                 {

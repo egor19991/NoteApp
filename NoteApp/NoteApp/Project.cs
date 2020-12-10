@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
-   public class Project
+    /// <summary>
+    /// Класс проекта, хранит лист с заметками
+    /// </summary>
+    public class Project
     {
         public List<Note> Notes { get; set; } = new List<Note>();
     }

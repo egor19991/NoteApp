@@ -14,29 +14,17 @@ namespace NoteAppUI
 {
     public partial class MainForm : Form
     {
-        private Project _project = new Project();
+        private Project _project;
 
        public MainForm()
         {
             InitializeComponent();
             this.Text = "NoteApp";
-            this.Size = new Size(400, 250);
+           // this.Size = new Size(400, 250);
+            _project = ProjectManager.LoadToFile(ProjectManager.DefaultPath);
             
-            Note not = new Note();
-            not.Name = "Д1 — серия дизель-поездов, строившаяся ";
-            not.Text = "Всего было построено 605 составов. Конструкционно Д1 являлись усовершенствованной версией дизель-поездов серии Д и" +
-                       " отличались от последних прежде всего наличием более мощного дизельного двигателя, гидромеханической передачи и составностью," +
-                       " увеличенной на один прицепной вагон.";
-            not.Category = NoteCategory.People;
-            Note n2 = (Note)not.Clone();
-            n2.Name = "Svin";
-            Console.WriteLine(not.Name);
-            Console.WriteLine(n2.Name);
-            _project.Notes.Add(n2);
-            _project.Notes.Add(not);
-            ProjectManager.SaveToFile(_project, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt");
-            Console.WriteLine(n2.Name);
-            _project = ProjectManager.LoadToFile(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt");
+            ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+            
             
         }
         
@@ -44,7 +32,8 @@ namespace NoteAppUI
         {
 
         }
-       
+
+        
     }
 
 }
