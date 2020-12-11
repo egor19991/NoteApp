@@ -163,7 +163,7 @@ namespace NoteAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 292);
+            this.ClientSize = new System.Drawing.Size(364, 291);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.label6);

@@ -16,6 +16,9 @@ namespace NoteAppUI
         public AboutForm()
         {
             InitializeComponent();
+            this.MaximumSize = new System.Drawing.Size(380, 330);
+            this.MinimumSize = new System.Drawing.Size(380, 330);
+            this.Text = "About";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

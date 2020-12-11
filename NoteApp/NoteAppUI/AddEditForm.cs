@@ -15,6 +15,13 @@ namespace NoteAppUI
         public AddEditForm()
         {
             InitializeComponent();
+            this.Text = "Add/Edit Note";
+            this.MinimumSize = new System.Drawing.Size(620, 375);
+        }
+
+        private void AddEditForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
