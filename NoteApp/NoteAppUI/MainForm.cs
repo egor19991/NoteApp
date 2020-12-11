@@ -67,13 +67,15 @@ namespace NoteAppUI
 
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-           var index = NoteListBox.SelectedIndex;
-            /*foreach (var proj in _project.Notes)
-            {
-                this.NameNoteLabel.Text = proj.Name;
-            }*/
+            var index = NoteListBox.SelectedIndex;
+            var firstItem = _project.Notes[index];
+            this.NameNoteLabel.Text = firstItem.Name;
+            //this.CategoryTextLabel.Text = nameof(firstItem.Category);
+            Console.Write(nameof(firstItem.Category));
+        }
 
-            //var firstItem = _project[index];
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

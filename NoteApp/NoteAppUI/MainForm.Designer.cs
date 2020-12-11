@@ -86,6 +86,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.CategoryTextLabel);
             this.splitContainer1.Panel2.Controls.Add(this.Categorylabel);
             this.splitContainer1.Panel2.Controls.Add(this.NameNoteLabel);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(778, 415);
             this.splitContainer1.SplitterDistance = 280;
             this.splitContainer1.TabIndex = 2;
