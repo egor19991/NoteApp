@@ -38,6 +38,7 @@ namespace NoteAppUI
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -149,11 +150,21 @@ namespace NoteAppUI
             this.linkLabel3.Text = "https://icons8.ru/";
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(32, 255);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "2020 Egor Krasnov";
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 292);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.linkLabel2);
@@ -181,5 +192,6 @@ namespace NoteAppUI
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.Label label7;
     }
 }
