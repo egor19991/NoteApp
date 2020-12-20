@@ -35,7 +35,7 @@
             this.NoteListBox = new System.Windows.Forms.ListBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ModifiedLabel = new System.Windows.Forms.Label();
             this.CreatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -78,7 +78,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.NoteTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.ModifiedDateTimePicker);
             this.splitContainer1.Panel2.Controls.Add(this.ModifiedLabel);
             this.splitContainer1.Panel2.Controls.Add(this.CreatedDateTimePicker);
@@ -86,7 +86,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.CategoryTextLabel);
             this.splitContainer1.Panel2.Controls.Add(this.Categorylabel);
             this.splitContainer1.Panel2.Controls.Add(this.NameNoteLabel);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(782, 415);
             this.splitContainer1.SplitterDistance = 281;
             this.splitContainer1.TabIndex = 2;
@@ -164,16 +163,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Show Category";
             // 
-            // textBox1
+            // NoteTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(3, 92);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(484, 312);
-            this.textBox1.TabIndex = 7;
+            this.NoteTextBox.Location = new System.Drawing.Point(3, 92);
+            this.NoteTextBox.Multiline = true;
+            this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.Size = new System.Drawing.Size(484, 312);
+            this.NoteTextBox.TabIndex = 7;
             // 
             // ModifiedDateTimePicker
             // 
@@ -198,6 +197,7 @@
             // 
             // CreatedDateTimePicker
             // 
+            this.CreatedDateTimePicker.Checked = false;
             this.CreatedDateTimePicker.Location = new System.Drawing.Point(58, 67);
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(123, 20);
@@ -319,7 +319,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(800, 480);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "NoteApp";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
@@ -352,13 +352,13 @@
         private System.Windows.Forms.ListBox NoteListBox;
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label NameNoteLabel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.Label ModifiedLabel;
-        private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
         private System.Windows.Forms.Label CreatedLabel;
         private System.Windows.Forms.Label CategoryTextLabel;
         private System.Windows.Forms.Label Categorylabel;
+        protected System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
     }
 }
 

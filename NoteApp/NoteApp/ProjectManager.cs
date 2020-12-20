@@ -26,9 +26,9 @@ namespace NoteApp
         /// <summary>
         /// Метод для сохранения данных в файл.
         /// </summary>
-        public static void SaveToFile(Project project, string path)
+        public static void SaveToFile(Project project, string fullfilaname)
         {
-            using (StreamWriter file = File.CreateText(path))
+            using (StreamWriter file = File.CreateText(fullfilaname))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 serializer.NullValueHandling = NullValueHandling.Include;

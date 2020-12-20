@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Runtime.Remoting.Messaging;
+using Newtonsoft.Json;
 
 
 namespace NoteApp
 {
-   
-    public class Note :ICloneable
+
+    public class Note : ICloneable
     {
         /// <summary>
         /// Переменная с названим заметки.
@@ -37,7 +38,7 @@ namespace NoteApp
         /// </summary>
         public string Name
         {
-            get { return _name;}
+            get { return _name; }
             set
             {
                 if (value.Length > 50)
@@ -54,7 +55,8 @@ namespace NoteApp
                     {
                         _name = value;
                     }
-                    _modified=DateTime.Now;
+
+                    _modified = DateTime.Now;
                 }
             }
         }
@@ -64,19 +66,20 @@ namespace NoteApp
         /// </summary>
         public NoteCategory Category
         {
-            get { return _category;}
+            get { return _category; }
             set
             {
                 _category = value;
                 _modified = DateTime.Now;
             }
         }
+
         /// <summary>
         /// Возвращает и задает текст заметки.
         /// </summary>
         public string Text
         {
-            get { return _text;}
+            get { return _text; }
             set
             {
                 if (value == String.Empty)
@@ -87,6 +90,7 @@ namespace NoteApp
                 {
                     _text = value;
                 }
+
                 _modified = DateTime.Now;
             }
         }
@@ -105,7 +109,7 @@ namespace NoteApp
         public DateTime Modified
         {
             get { return _modified; }
-            }
+        }
 
         /// <summary>
         /// Метод для клонирования заметки
@@ -114,8 +118,29 @@ namespace NoteApp
         {
             return new Note
             {
-                Name = this.Name, Category = this.Category,  Text = this.Text,
+                Name = this.Name, Category = this.Category, Text = this.Text
             };
+        }
+
+        public Note() { }
+
+        public Note(string name, string text, NoteCategory category)
+        {
+            Name = name;
+            Text = text;
+            Category = category;
+        }
+
+
+
+        [JsonConstructor]
+        private Note(string name, string text, NoteCategory category, DateTime created, DateTime modified)
+        {
+            _name = name;
+            _text = text;
+            _category = category;
+            _created = created;
+            _modified = modified;
         }
 
 

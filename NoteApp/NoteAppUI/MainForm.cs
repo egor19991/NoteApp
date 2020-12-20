@@ -20,8 +20,6 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
-            this.Text = "NoteApp";
-            this.MinimumSize = new System.Drawing.Size(800, 480);
             _project = ProjectManager.LoadToFile(ProjectManager.DefaultPath);
            foreach (var item in _project.Notes)
            {
@@ -68,16 +66,17 @@ namespace NoteAppUI
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var index = NoteListBox.SelectedIndex;
-            var firstItem = _project.Notes[index];
-            this.NameNoteLabel.Text = firstItem.Name;
-            //this.CategoryTextLabel.Text = nameof(firstItem.Category);
-            Console.Write(nameof(firstItem.Category));
+            var selectedItem = _project.Notes[index];
+            this.NameNoteLabel.Text = selectedItem.Name;
+            this.CategoryTextLabel.Text = selectedItem.Category.ToString();
+            this.NoteTextBox.Text = selectedItem.Text; 
+            this.CreatedDateTimePicker.Value = selectedItem.Created;
+            this.ModifiedDateTimePicker.Value = selectedItem.Modified;
+            //selectedItem.Created.Date;
+
         }
 
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
 
 }
