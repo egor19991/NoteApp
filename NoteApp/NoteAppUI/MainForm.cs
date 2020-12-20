@@ -21,12 +21,6 @@ namespace NoteAppUI
         {
             InitializeComponent();
             _project = ProjectManager.LoadToFile(ProjectManager.DefaultPath);
-           foreach (var item in _project.Notes)
-           {
-               NoteListBox.Items.Add(item.Name);
-           }
-
-            //ComboBox
             var categories = Enum.GetValues(typeof(NoteCategory));
             foreach (NoteCategory category in categories)
             {
@@ -40,7 +34,10 @@ namespace NoteAppUI
         
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            /*foreach (var item in _project.Notes)
+            {
+                NoteListBox.Items.Add(item.Name);
+            }*/
         }
 
 
@@ -55,25 +52,44 @@ namespace NoteAppUI
         {
             if (CategoryComboBox.SelectedIndex == -1)
             {
-                // Если ничего не выбрано, завершаем обработчик
                 return;
             }
-            NoteCategory selectedCategory;
-            //selectedColor = (NoteCategory)CategoryComboBox.SelectedItem;
-            //this.BackColor = selectedColor;
+            if (CategoryComboBox.SelectedItem.ToString() != "All")
+            {
+                NoteCategory selectedCategory;
+                selectedCategory = (NoteCategory) CategoryComboBox.SelectedItem;
+                NoteListBox.Items.Clear(); 
+                foreach (var item in _project.Notes)
+                {
+                     if (item.Category == selectedCategory)
+                     {
+                         NoteListBox.Items.Add(item.Name);
+                     } 
+                }
+            }
+            else
+            {
+                NoteListBox.Items.Clear();
+                foreach (var item in _project.Notes)
+                { 
+                    NoteListBox.Items.Add(item.Name);
+                }
+            }
         }
 
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var index = NoteListBox.SelectedIndex;
-            var selectedItem = _project.Notes[index];
+            if (NoteListBox.SelectedIndex == -1)
+            {
+                return;
+            } 
+            //Элемент листа ищется по названию
+            var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
             this.NameNoteLabel.Text = selectedItem.Name;
             this.CategoryTextLabel.Text = selectedItem.Category.ToString();
             this.NoteTextBox.Text = selectedItem.Text; 
             this.CreatedDateTimePicker.Value = selectedItem.Created;
             this.ModifiedDateTimePicker.Value = selectedItem.Modified;
-            //selectedItem.Created.Date;
-
         }
 
 

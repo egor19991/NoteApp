@@ -178,6 +178,7 @@
             // 
             this.ModifiedDateTimePicker.CalendarTitleForeColor = System.Drawing.Color.AntiqueWhite;
             this.ModifiedDateTimePicker.Cursor = System.Windows.Forms.Cursors.No;
+            this.ModifiedDateTimePicker.Enabled = false;
             this.ModifiedDateTimePicker.Location = new System.Drawing.Point(249, 66);
             this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
             this.ModifiedDateTimePicker.Size = new System.Drawing.Size(121, 20);
@@ -198,6 +199,7 @@
             // CreatedDateTimePicker
             // 
             this.CreatedDateTimePicker.Checked = false;
+            this.CreatedDateTimePicker.Enabled = false;
             this.CreatedDateTimePicker.Location = new System.Drawing.Point(58, 67);
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(123, 20);

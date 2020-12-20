@@ -61,7 +61,7 @@ namespace NoteAppUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TitleTextBox.Location = new System.Drawing.Point(72, 10);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(566, 20);
+            this.TitleTextBox.Size = new System.Drawing.Size(565, 20);
             this.TitleTextBox.TabIndex = 1;
             // 
             // Category
@@ -101,9 +101,10 @@ namespace NoteAppUI
             this.CreatedNoteDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreatedNoteDateTimePicker.Enabled = false;
             this.CreatedNoteDateTimePicker.Location = new System.Drawing.Point(72, 71);
             this.CreatedNoteDateTimePicker.Name = "CreatedNoteDateTimePicker";
-            this.CreatedNoteDateTimePicker.Size = new System.Drawing.Size(118, 20);
+            this.CreatedNoteDateTimePicker.Size = new System.Drawing.Size(117, 20);
             this.CreatedNoteDateTimePicker.TabIndex = 5;
             // 
             // Modified
@@ -120,6 +121,7 @@ namespace NoteAppUI
             // 
             // ModifiedNoteDateTimePicker
             // 
+            this.ModifiedNoteDateTimePicker.Enabled = false;
             this.ModifiedNoteDateTimePicker.Location = new System.Drawing.Point(263, 71);
             this.ModifiedNoteDateTimePicker.Name = "ModifiedNoteDateTimePicker";
             this.ModifiedNoteDateTimePicker.Size = new System.Drawing.Size(119, 20);
@@ -133,7 +135,7 @@ namespace NoteAppUI
             this.textBox1.Location = new System.Drawing.Point(13, 103);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(620, 375);
+            this.textBox1.Size = new System.Drawing.Size(619, 375);
             this.textBox1.TabIndex = 8;
             // 
             // OK
@@ -143,7 +145,7 @@ namespace NoteAppUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.OK.Location = new System.Drawing.Point(467, 484);
             this.OK.Name = "OK";
-            this.OK.Size = new System.Drawing.Size(75, 23);
+            this.OK.Size = new System.Drawing.Size(74, 23);
             this.OK.TabIndex = 9;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
@@ -155,7 +157,7 @@ namespace NoteAppUI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Cancel.Location = new System.Drawing.Point(558, 484);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Cancel.Size = new System.Drawing.Size(74, 23);
             this.Cancel.TabIndex = 10;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -164,7 +166,7 @@ namespace NoteAppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 511);
+            this.ClientSize = new System.Drawing.Size(644, 511);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.textBox1);
@@ -176,6 +178,7 @@ namespace NoteAppUI
             this.Controls.Add(this.Category);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.Title);
+            this.MaximumSize = new System.Drawing.Size(660, 550);
             this.Name = "AddEditForm";
             this.Text = "Add/Edit Note";
             this.Load += new System.EventHandler(this.AddEditForm_Load);
