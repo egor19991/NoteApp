@@ -17,6 +17,9 @@ namespace NoteAppUI
         private Project _project;
         //private Project _project = new Project();
 
+        
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -34,10 +37,10 @@ namespace NoteAppUI
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*foreach (var item in _project.Notes)
+            foreach (var item in _project.Notes)
             {
                 NoteListBox.Items.Add(item.Name);
-            }*/
+            }
         }
 
 
@@ -54,7 +57,7 @@ namespace NoteAppUI
             {
                 return;
             }
-            if (CategoryComboBox.SelectedItem.ToString() != "All")
+            /*if (CategoryComboBox.SelectedItem.ToString() != "All")
             {
                 NoteCategory selectedCategory;
                 selectedCategory = (NoteCategory) CategoryComboBox.SelectedItem;
@@ -74,7 +77,7 @@ namespace NoteAppUI
                 { 
                     NoteListBox.Items.Add(item.Name);
                 }
-            }
+            }*/
         }
 
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,9 +85,12 @@ namespace NoteAppUI
             if (NoteListBox.SelectedIndex == -1)
             {
                 return;
-            } 
-            //Элемент листа ищется по названию
-            var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
+            }
+            //Поиск элемента по индексу ListsBox
+            var  selectedItem = _project.Notes[NoteListBox.SelectedIndex];
+
+            //Элемент листа ищется по названию ListBox
+            //var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
             this.NameNoteLabel.Text = selectedItem.Name;
             this.CategoryTextLabel.Text = selectedItem.Category.ToString();
             this.NoteTextBox.Text = selectedItem.Text; 
@@ -92,7 +98,51 @@ namespace NoteAppUI
             this.ModifiedDateTimePicker.Value = selectedItem.Modified;
         }
 
+        private void EditNote()
+        {
+            if (NoteListBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            var selectedIndex = NoteListBox.SelectedIndex;
+            var selectedNote = _project.Notes[selectedIndex];
+            var add = new NoteForm(); 
+            add.NNote = selectedNote;
+            add.ShowDialog();
+            if (add.DialogResult == DialogResult.OK)
+            {
+                var updatedData = add.NNote;
+                NoteListBox.Items.RemoveAt(selectedIndex);
+                _project.Notes.RemoveAt(selectedIndex);
+                _project.Notes.Insert(selectedIndex, updatedData);
+                this.NameNoteLabel.Text = updatedData.Name;
+                this.CategoryTextLabel.Text = updatedData.Category.ToString();
+                this.NoteTextBox.Text = updatedData.Text;
+                this.CreatedDateTimePicker.Value = updatedData.Created;
+                this.ModifiedDateTimePicker.Value = updatedData.Modified;
+                NoteListBox.Items.Insert(selectedIndex, updatedData.Name);
+            }
+        }
 
+        private void AddNoteButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void EditNoteButton_Click(object sender, EventArgs e)
+        {
+            EditNote();
+        }
+
+        private void RemoveNoteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditNote();
+        }
     }
 
 }

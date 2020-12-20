@@ -102,6 +102,7 @@
             this.RemoveNoteButton.TabIndex = 5;
             this.RemoveNoteButton.UseMnemonic = false;
             this.RemoveNoteButton.UseVisualStyleBackColor = true;
+            this.RemoveNoteButton.Click += new System.EventHandler(this.RemoveNoteButton_Click);
             // 
             // EditNoteButton
             // 
@@ -114,6 +115,7 @@
             this.EditNoteButton.Size = new System.Drawing.Size(23, 27);
             this.EditNoteButton.TabIndex = 4;
             this.EditNoteButton.UseVisualStyleBackColor = true;
+            this.EditNoteButton.Click += new System.EventHandler(this.EditNoteButton_Click);
             // 
             // AddNoteButton
             // 
@@ -126,6 +128,7 @@
             this.AddNoteButton.Size = new System.Drawing.Size(23, 27);
             this.AddNoteButton.TabIndex = 3;
             this.AddNoteButton.UseVisualStyleBackColor = true;
+            this.AddNoteButton.Click += new System.EventHandler(this.AddNoteButton_Click);
             // 
             // NoteListBox
             // 
@@ -144,6 +147,7 @@
             this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(94, 10);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -168,6 +172,7 @@
             this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoteTextBox.Enabled = false;
             this.NoteTextBox.Location = new System.Drawing.Point(3, 92);
             this.NoteTextBox.Multiline = true;
             this.NoteTextBox.Name = "NoteTextBox";
@@ -234,9 +239,9 @@
             // NameNoteLabel
             // 
             this.NameNoteLabel.AutoSize = true;
-            this.NameNoteLabel.BackColor = System.Drawing.Color.Gainsboro;
+            this.NameNoteLabel.BackColor = System.Drawing.SystemColors.Control;
             this.NameNoteLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NameNoteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameNoteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.NameNoteLabel.Location = new System.Drawing.Point(16, 11);
             this.NameNoteLabel.Name = "NameNoteLabel";
             this.NameNoteLabel.Size = new System.Drawing.Size(0, 20);
@@ -282,19 +287,20 @@
             // addNoteToolStripMenuItem
             // 
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNoteToolStripMenuItem.Text = "Add Note";
             // 
             // editNoteToolStripMenuItem
             // 
             this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editNoteToolStripMenuItem.Text = "Edit Note";
+            this.editNoteToolStripMenuItem.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
             // 
             // removeNoteToolStripMenuItem
             // 
             this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeNoteToolStripMenuItem.Text = "Remove Note";
             // 
             // helpToolStripMenuItem

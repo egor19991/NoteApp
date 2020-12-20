@@ -1,7 +1,7 @@
 ﻿
 namespace NoteAppUI
 {
-    partial class AddEditForm
+    partial class NoteForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@ namespace NoteAppUI
             this.CreatedNoteDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Modified = new System.Windows.Forms.Label();
             this.ModifiedNoteDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -127,16 +127,16 @@ namespace NoteAppUI
             this.ModifiedNoteDateTimePicker.Size = new System.Drawing.Size(119, 20);
             this.ModifiedNoteDateTimePicker.TabIndex = 7;
             // 
-            // textBox1
+            // NoteTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(13, 103);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(619, 375);
-            this.textBox1.TabIndex = 8;
+            this.NoteTextBox.Location = new System.Drawing.Point(13, 103);
+            this.NoteTextBox.Multiline = true;
+            this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.Size = new System.Drawing.Size(619, 375);
+            this.NoteTextBox.TabIndex = 8;
             // 
             // OK
             // 
@@ -149,6 +149,7 @@ namespace NoteAppUI
             this.OK.TabIndex = 9;
             this.OK.Text = "OK";
             this.OK.UseVisualStyleBackColor = true;
+            this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
             // Cancel
             // 
@@ -161,15 +162,16 @@ namespace NoteAppUI
             this.Cancel.TabIndex = 10;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
-            // AddEditForm
+            // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 511);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.ModifiedNoteDateTimePicker);
             this.Controls.Add(this.Modified);
             this.Controls.Add(this.CreatedNoteDateTimePicker);
@@ -179,9 +181,8 @@ namespace NoteAppUI
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.Title);
             this.MaximumSize = new System.Drawing.Size(660, 550);
-            this.Name = "AddEditForm";
+            this.Name = "NoteForm";
             this.Text = "Add/Edit Note";
-            this.Load += new System.EventHandler(this.AddEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,13 +192,13 @@ namespace NoteAppUI
 
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.TextBox TitleTextBox;
-        private System.Windows.Forms.Label Category;
+        public System.Windows.Forms.Label Category;
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Label Created;
         private System.Windows.Forms.DateTimePicker CreatedNoteDateTimePicker;
         private System.Windows.Forms.Label Modified;
         private System.Windows.Forms.DateTimePicker ModifiedNoteDateTimePicker;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.Button Cancel;
     }
