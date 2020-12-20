@@ -29,15 +29,15 @@ namespace NoteAppUI
            }
 
             //ComboBox
-            CategoryComboBox.Items.Add(NoteCategory.Different);
-            CategoryComboBox.Items.Add(NoteCategory.Documents);
-            CategoryComboBox.Items.Add(NoteCategory.Finance);
-            CategoryComboBox.Items.Add(NoteCategory.HealthAndSport);
-            CategoryComboBox.Items.Add(NoteCategory.House);
-            CategoryComboBox.Items.Add(NoteCategory.People);
-            CategoryComboBox.Items.Add(NoteCategory.Work);
+            var categories = Enum.GetValues(typeof(NoteCategory));
+            foreach (NoteCategory category in categories)
+            {
+                CategoryComboBox.Items.Add(category);
+            }
             CategoryComboBox.Items.Add("All");
-            CategoryComboBox.SelectedIndex = 7;
+            CategoryComboBox.SelectedItem = "All";
+
+
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace NoteAppUI
                 // Если ничего не выбрано, завершаем обработчик
                 return;
             }
-            NoteCategory selectedColor;
+            NoteCategory selectedCategory;
             //selectedColor = (NoteCategory)CategoryComboBox.SelectedItem;
             //this.BackColor = selectedColor;
         }
