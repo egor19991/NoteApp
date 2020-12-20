@@ -57,6 +57,8 @@ namespace NoteAppUI
             {
                 return;
             }
+            //выбор категории, отключена т.к. происходит поиск по названию категории, т.к. для изменения данных используется индекс, а не название заметки.
+            // происходит конфликт. 
             /*if (CategoryComboBox.SelectedItem.ToString() != "All")
             {
                 NoteCategory selectedCategory;
@@ -106,12 +108,12 @@ namespace NoteAppUI
             }
             var selectedIndex = NoteListBox.SelectedIndex;
             var selectedNote = _project.Notes[selectedIndex];
-            var add = new NoteForm(); 
-            add.NNote = selectedNote;
-            add.ShowDialog();
-            if (add.DialogResult == DialogResult.OK)
+            var edit = new NoteForm(); 
+            edit.NNote = selectedNote;
+            edit.ShowDialog();
+            if (edit.DialogResult == DialogResult.OK)
             {
-                var updatedData = add.NNote;
+                var updatedData = edit.NNote;
                 NoteListBox.Items.RemoveAt(selectedIndex);
                 _project.Notes.RemoveAt(selectedIndex);
                 _project.Notes.Insert(selectedIndex, updatedData);
@@ -124,9 +126,52 @@ namespace NoteAppUI
             }
         }
 
+
+        private void RemoveNote()
+        {
+            if (NoteListBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            var selectedIndex = NoteListBox.SelectedIndex;
+            var selectedNote = _project.Notes[selectedIndex]; ;
+            DialogResult result = MessageBox.Show(("«Do you really want to remove this note: " + selectedNote.Name),  "Remove Note",
+                MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                NoteListBox.Items.RemoveAt(selectedIndex);
+                _project.Notes.RemoveAt(selectedIndex);
+                this.NameNoteLabel.Text = "";
+                this.CategoryTextLabel.Text = "";
+                this.NoteTextBox.Text = "";
+                this.CreatedDateTimePicker.Value = DateTime.Now;
+                this.ModifiedDateTimePicker.Value = DateTime.Now;
+            }
+        }
+
+        private void AddNote()
+        {
+            Note note = new Note();
+            var add = new NoteForm();
+            add.NNote = note;
+            add.ShowDialog();
+            if (add.DialogResult == DialogResult.OK)
+            {
+                var addData = add.NNote;
+                _project.Notes.Add(addData);
+                this.NameNoteLabel.Text = addData.Name;
+                this.CategoryTextLabel.Text = addData.Category.ToString();
+                this.NoteTextBox.Text = addData.Text;
+                this.CreatedDateTimePicker.Value = addData.Created;
+                this.ModifiedDateTimePicker.Value = addData.Modified;
+                NoteListBox.Items.Add(addData.Name);
+            }
+        }
+
+
         private void AddNoteButton_Click(object sender, EventArgs e)
         {
-            
+            AddNote();
         }
 
         private void EditNoteButton_Click(object sender, EventArgs e)
@@ -136,12 +181,32 @@ namespace NoteAppUI
 
         private void RemoveNoteButton_Click(object sender, EventArgs e)
         {
-
+            RemoveNote();
         }
 
         private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditNote();
+        }
+
+        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNote();
+        }
+
+        private void removeNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveNote();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            /*DialogResult result = MessageBox.Show("«Do you really want to exit", "Exit",
+                MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                Close();
+            }*/
         }
     }
 

@@ -289,6 +289,7 @@
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
             this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNoteToolStripMenuItem.Text = "Add Note";
+            this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
             // 
             // editNoteToolStripMenuItem
             // 
@@ -302,6 +303,7 @@
             this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
             this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeNoteToolStripMenuItem.Text = "Remove Note";
+            this.removeNoteToolStripMenuItem.Click += new System.EventHandler(this.removeNoteToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -328,6 +330,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 480);
             this.Name = "MainForm";
             this.Text = "NoteApp";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

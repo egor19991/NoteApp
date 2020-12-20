@@ -26,7 +26,7 @@ namespace NoteApp
         /// <summary>
         /// Переменная с датой изменения заметки.
         /// </summary>
-        private DateTime _modified;
+        private DateTime _modified = DateTime.Now;
 
         /// <summary>
         /// Переменная с категорией заметки.
