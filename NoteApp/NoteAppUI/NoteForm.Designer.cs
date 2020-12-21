@@ -40,6 +40,7 @@ namespace NoteAppUI
             this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.OK = new System.Windows.Forms.Button();
             this.Cancel = new System.Windows.Forms.Button();
+            this.TitleExeceptionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Title
@@ -60,9 +61,11 @@ namespace NoteAppUI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TitleTextBox.Location = new System.Drawing.Point(72, 10);
+            this.TitleTextBox.MaxLength = 50;
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(565, 20);
             this.TitleTextBox.TabIndex = 1;
+            this.TitleTextBox.TextChanged += new System.EventHandler(this.TitleTextBox_TextChanged);
             // 
             // Category
             // 
@@ -164,11 +167,20 @@ namespace NoteAppUI
             this.Cancel.UseVisualStyleBackColor = true;
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
+            // TitleExeceptionLabel
+            // 
+            this.TitleExeceptionLabel.AutoSize = true;
+            this.TitleExeceptionLabel.Location = new System.Drawing.Point(210, 39);
+            this.TitleExeceptionLabel.Name = "TitleExeceptionLabel";
+            this.TitleExeceptionLabel.Size = new System.Drawing.Size(0, 13);
+            this.TitleExeceptionLabel.TabIndex = 11;
+            // 
             // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 511);
+            this.Controls.Add(this.TitleExeceptionLabel);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OK);
             this.Controls.Add(this.NoteTextBox);
@@ -201,5 +213,6 @@ namespace NoteAppUI
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.Button OK;
         private System.Windows.Forms.Button Cancel;
+        private System.Windows.Forms.Label TitleExeceptionLabel;
     }
 }

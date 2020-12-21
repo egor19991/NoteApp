@@ -31,8 +31,6 @@ namespace NoteAppUI
             }
             CategoryComboBox.Items.Add("All");
             CategoryComboBox.SelectedItem = "All";
-
-
         }
         
         private void Form1_Load(object sender, EventArgs e)
@@ -90,7 +88,6 @@ namespace NoteAppUI
             }
             //Поиск элемента по индексу ListsBox
             var  selectedItem = _project.Notes[NoteListBox.SelectedIndex];
-
             //Элемент листа ищется по названию ListBox
             //var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
             this.NameNoteLabel.Text = selectedItem.Name;
@@ -146,6 +143,7 @@ namespace NoteAppUI
                 this.NoteTextBox.Text = "";
                 this.CreatedDateTimePicker.Value = DateTime.Now;
                 this.ModifiedDateTimePicker.Value = DateTime.Now;
+                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
             }
         }
 
@@ -165,6 +163,7 @@ namespace NoteAppUI
                 this.CreatedDateTimePicker.Value = addData.Created;
                 this.ModifiedDateTimePicker.Value = addData.Modified;
                 NoteListBox.Items.Add(addData.Name);
+                ProjectManager.SaveToFile(_project,ProjectManager.DefaultPath);
             }
         }
 
@@ -205,8 +204,10 @@ namespace NoteAppUI
                 MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                Close();
+                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+                this.Close();
             }*/
+            ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
         }
     }
 
