@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoteApp.UnitTests
 {
+    /*
     using  NUnit.Framework;
     [TestFixture]
     public class ProjectManagerTests
@@ -62,7 +63,59 @@ namespace NoteApp.UnitTests
             // Assert
             var actualFileContent = File.ReadAllText(actualFilename);
             var expectedFileContent = File.ReadAllText(expectedFilename);
-            Assert.AreEqual(expectedFileContent, actualFileContent);
+            NUnit.Framework.Assert.AreEqual(expectedFileContent, actualFileContent);
         }
-    }
+
+        [Test]
+        public void LoadToFile_CorrectFile_FileLoadCorrectly()
+        {
+            // Setup
+            var sourceProject = PrepareProject();
+            var location = Assembly.GetExecutingAssembly().Location;
+            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var expectedFilename = testDataFolder + @"\expectedProject.json";
+            
+            //  Act
+            var isFileExist = File.Exists(expectedFilename);
+            NUnit.Framework.Assert.AreEqual(true, isFileExist);
+            var loadProject = ProjectManager.LoadToFile(expectedFilename);
+
+            // Assert
+            NUnit.Framework.Assert.AreEqual(sourceProject.Notes.ToString(), loadProject.Notes.ToString());
+        }
+
+        [Test]
+        public void LoadToFile_NoCorrectFile_EmptyProject()
+        {
+            // Setup
+            var sourceProject = new Project();
+            var location = Assembly.GetExecutingAssembly().Location;
+            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var expectedFilename = testDataFolder + @"\noCorectedProject.json";
+
+            //  Act
+            var isFileExist = File.Exists(expectedFilename);
+            //NUnit.Framework.Assert.AreEqual(false, isFileExist);
+            var loadProject = ProjectManager.LoadToFile(expectedFilename);
+
+            // Assert
+            NUnit.Framework.Assert.AreEqual(sourceProject.Notes.ToString(), loadProject.Notes.ToString());
+        }
+
+
+        [Test]
+        //!!!! Не знаю как правильно назвать тестирование пути по умолчанию
+        public void DefaultPath_Empty_ReturnSameDefaultPath()
+        {
+            // Setup
+            var expectedDefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt";
+
+            //  Act
+            var actualDefaultPath = ProjectManager.DefaultPath;
+
+            // Assert
+            NUnit.Framework.Assert.AreEqual(expectedDefaultPath, actualDefaultPath);
+        }
+
+    }*/
 }

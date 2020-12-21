@@ -62,6 +62,9 @@
     <None Include="TestData\expectedProject.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="TestData\noCorectedProject.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\NoteApp\NoteApp.csproj">

@@ -55,7 +55,6 @@ namespace NoteApp
                     {
                         _name = value;
                     }
-
                     _modified = DateTime.Now;
                 }
             }
@@ -132,8 +131,6 @@ namespace NoteApp
             Text = text;
             Category = category;
         }
-
-
 
         [JsonConstructor]
         private Note(string name, string text, NoteCategory category, DateTime created, DateTime modified)
