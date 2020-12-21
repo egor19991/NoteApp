@@ -167,6 +167,11 @@ namespace NoteAppUI
             }
         }
 
+        private void CloseForm()
+        {
+          ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+          Environment.Exit(0);
+        }
 
         private void AddNoteButton_Click(object sender, EventArgs e)
         {
@@ -198,16 +203,17 @@ namespace NoteAppUI
             RemoveNote();
         }
 
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseForm();
+        }
+
+       
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            /*DialogResult result = MessageBox.Show("«Do you really want to exit", "Exit",
-                MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
-                this.Close();
-            }*/
-            ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
+            CloseForm();
         }
     }
 

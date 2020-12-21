@@ -29,6 +29,7 @@ namespace NoteAppUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteForm));
             this.Title = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.Category = new System.Windows.Forms.Label();
@@ -192,6 +193,7 @@ namespace NoteAppUI
             this.Controls.Add(this.Category);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.Title);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(660, 550);
             this.Name = "NoteForm";
             this.Text = "Add/Edit Note";

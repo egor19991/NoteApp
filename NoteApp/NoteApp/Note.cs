@@ -21,7 +21,7 @@ namespace NoteApp
         /// <summary>
         ///  Переменная с датой создания заметки.
         /// </summary>
-        readonly private DateTime _created = DateTime.Now;
+        private DateTime _created = DateTime.Now;
 
         /// <summary>
         /// Переменная с датой изменения заметки.
@@ -101,6 +101,7 @@ namespace NoteApp
         public DateTime Created
         {
             get { return _created; }
+            set { _created = value; }
         }
 
         /// <summary>
@@ -109,6 +110,7 @@ namespace NoteApp
         public DateTime Modified
         {
             get { return _modified; }
+            set { _modified = value; }
         }
 
         /// <summary>
