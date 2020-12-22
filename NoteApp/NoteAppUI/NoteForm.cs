@@ -46,15 +46,23 @@ namespace NoteAppUI
             }
         }
 
-      
-
         private void OK_Click(object sender, EventArgs e)
         {
-            _note.Name = TitleTextBox.Text;
-            _note.Text = NoteTextBox.Text;
-            _note.Category = (NoteCategory)CategoryComboBox.SelectedItem;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            try
+            {
+                _note.Name = TitleTextBox.Text;
+                _note.Text = NoteTextBox.Text;
+                _note.Category = (NoteCategory)CategoryComboBox.SelectedItem;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (ArgumentException exception)
+            {
+                MessageBox.Show("Name max length 50");
+                TitleTextBox.BackColor = Color.Red;
+                TitleExeceptionLabel.Text = "Max length 50";
+                TitleExeceptionLabel.ForeColor = Color.Red;
+            }
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -65,12 +73,12 @@ namespace NoteAppUI
 
         private void TitleTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (TitleTextBox.Text.Length > 50)
+            if (TitleTextBox.Text.Length > 60)
             {
                 TitleTextBox.BackColor = Color.Red;
                 TitleExeceptionLabel.Text = "Max length 50";
                 TitleExeceptionLabel.ForeColor = Color.Red;
-                TitleTextBox.Text = TitleTextBox.Text.Substring(0, 50);
+                //TitleTextBox.Text = TitleTextBox.Text.Substring(0, 50);
             }
         }
     }

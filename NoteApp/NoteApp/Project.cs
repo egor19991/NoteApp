@@ -12,6 +12,8 @@ namespace NoteApp
     /// </summary>
     public class Project
     {
+        
         public List<Note> Notes { get; set; } = new List<Note>();
+        
     }
 }
