@@ -12,6 +12,7 @@ namespace NoteApp
     /// </summary>
     public class Project
     {
+        private int _selectNote;
         public List<Note> Notes { get; set; } = new List<Note>();
 
         /// <summary>
