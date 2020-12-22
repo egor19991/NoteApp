@@ -62,7 +62,7 @@ namespace NoteAppUI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TitleTextBox.Location = new System.Drawing.Point(72, 10);
-            this.TitleTextBox.MaxLength = 50;
+            this.TitleTextBox.MaxLength = 60;
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(565, 20);
             this.TitleTextBox.TabIndex = 1;
