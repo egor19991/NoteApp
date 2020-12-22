@@ -141,12 +141,6 @@ namespace NoteApp
             _created = created;
             _modified = modified;
         }
-
-
     }
-
-
-
-
 }
 
