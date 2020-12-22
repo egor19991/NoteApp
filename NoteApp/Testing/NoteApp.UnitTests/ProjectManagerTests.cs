@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NoteApp.UnitTests
 {
-    /*
+    
     using  NUnit.Framework;
     [TestFixture]
     public class ProjectManagerTests
@@ -117,5 +117,5 @@ namespace NoteApp.UnitTests
             NUnit.Framework.Assert.AreEqual(expectedDefaultPath, actualDefaultPath);
         }
 
-    }*/
+    }
 }
