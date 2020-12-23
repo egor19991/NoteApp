@@ -31,6 +31,9 @@ namespace NoteApp
             set { _selectNote = value; }
         }
 
+        /// <summary>
+        /// Метод выполняет сортировку листа
+        /// </summary>
         public List<Note> SortList()
         {
             var sortedNote =  Notes.OrderByDescending(note => note.Modified).ToList();
