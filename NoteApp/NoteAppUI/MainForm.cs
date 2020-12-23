@@ -135,10 +135,6 @@ namespace NoteAppUI
             {
                 var addData = add.NNote;
                 _project.Notes.Add(addData);
-                if ((NoteCategory) CategoryComboBox.SelectedItem == addData.Category)
-                {
-                    NoteListBox.Items.Add(addData.Name);
-                }
                 ChangeCategory();
                 ProjectManager.SaveToFile(_project,ProjectManager.DefaultPath);
             }
@@ -221,6 +217,23 @@ namespace NoteAppUI
             CloseForm();
         }
 
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                RemoveNote();
+            }
+        }
+
+        private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 
 }
