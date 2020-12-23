@@ -224,16 +224,5 @@ namespace NoteAppUI
                 RemoveNote();
             }
         }
-
-        private void MainForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-
-        }
-
-        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
     }
-
 }
