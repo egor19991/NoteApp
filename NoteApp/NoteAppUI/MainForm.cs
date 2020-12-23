@@ -215,6 +215,18 @@ namespace NoteAppUI
         {
             CloseForm();
         }
+
+        private void TestButton_Click(object sender, EventArgs e)
+        {
+            NoteCategory selectedCategory;
+            selectedCategory = (NoteCategory)CategoryComboBox.SelectedItem;
+            List<Note> test = _project.SortList(selectedCategory);
+            NoteListBox.Items.Clear();
+            foreach (var item in test)
+            {
+                NoteListBox.Items.Add(item.Name);
+            }
+        }
     }
 
 }
