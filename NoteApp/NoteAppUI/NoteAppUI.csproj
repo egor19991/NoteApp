@@ -138,6 +138,7 @@ mkdir $(SolutionDir)InstallScripts\Release
 rmdir /s /q $(SolutionDir)InstallScripts\Installers
 mkdir $(SolutionDir)InstallScripts\Installers
 xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)InstallScripts\Release\ 
-xcopy $(ProjectDir)$(OutDir)*.exe $(SolutionDir)InstallScripts\Release\</PostBuildEvent>
+xcopy $(ProjectDir)$(OutDir)*.exe $(SolutionDir)InstallScripts\Release\
+"D:\Program Files\Inno Setup 6\ISCC.exe" "$(SolutionDir)InstallScripts\installer.iss"</PostBuildEvent>
   </PropertyGroup>
 </Project>

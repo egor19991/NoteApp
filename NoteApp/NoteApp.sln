@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoteApp.UnitTests", "Testin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InstallScripts", "InstallScripts", "{F0C5BD49-5770-46A3-9F0F-8D9D43FA24AF}"
 	ProjectSection(SolutionItems) = preProject
-		InstallScripts\NoteAppCompile.iss = InstallScripts\NoteAppCompile.iss
+		InstallScripts\installer.iss = InstallScripts\installer.iss
 	EndProjectSection
 EndProject
 Global

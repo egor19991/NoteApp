@@ -14,7 +14,14 @@ namespace NoteAppUI
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Переменная, которая хранит загруженный проект
+        /// </summary>
         private Project _project;
+
+        /// <summary>
+        /// Переменная хранит отсортированный лист
+        /// </summary>
         private List<Note> _sortedList;
 
         public MainForm()
@@ -71,6 +78,10 @@ namespace NoteAppUI
             _project.SelectNote = _project.Notes.IndexOf(selectedItem);
         }
 
+
+        /// <summary>
+        /// Метод для изменения выбранной заметки
+        /// </summary>
         private void EditNote()
         {
             if (NoteListBox.SelectedIndex == -1)
@@ -99,6 +110,9 @@ namespace NoteAppUI
             }
         }
 
+        /// <summary>
+        /// Метод для удаления заметки
+        /// </summary>
         private void RemoveNote()
         {
             if (NoteListBox.SelectedIndex == -1)
@@ -125,6 +139,9 @@ namespace NoteAppUI
             }
         }
 
+        /// <summary>
+        /// Метод для создания заметки
+        /// </summary>
         private void AddNote()
         {
             Note note = new Note();
@@ -140,6 +157,9 @@ namespace NoteAppUI
             }
         }
 
+        /// <summary>
+        /// Метод выполняет обновление листа заметок и NoteListBox
+        /// </summary>
         private void ChangeCategory()
         {
             if (CategoryComboBox.SelectedIndex == -1)
@@ -203,8 +223,7 @@ namespace NoteAppUI
         {
             RemoveNote();
         }
-
-
+        
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseForm();
