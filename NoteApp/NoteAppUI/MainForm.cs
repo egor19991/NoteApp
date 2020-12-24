@@ -210,8 +210,6 @@ namespace NoteAppUI
             CloseForm();
         }
 
-       
-
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseForm();
