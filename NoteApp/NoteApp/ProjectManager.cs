@@ -16,7 +16,7 @@ namespace NoteApp
         /// <summary>
         /// Переменная, хранящее стандартный путь для сохранения файла
         /// </summary>
-        private static string _defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt";
+        private static string _defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\NoteApp.notes";
         
         /// <summary>
         /// Поле, хранящее стандартный путь для сохранения файла
