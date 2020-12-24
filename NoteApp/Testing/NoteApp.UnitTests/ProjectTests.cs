@@ -34,6 +34,116 @@ namespace NoteApp.UnitTests
             NUnit.Framework.Assert.AreNotEqual(expectedProject, actualProject);
         }
 
+
+        [Test]
+        public void SortList_NotSorList_SortList()
+        {
+            // Setup
+            var notSortProject = new Project();
+            var sortProject = new Project();
+            notSortProject.Notes.Add(new Note()
+            {
+                Name = "ДР1 — серия советских дизель-поездов",
+                Text = "В начале 60-х на железные дороги СССР поступили дизель-поезда серии Д венгерского производства." +
+                       " Изучив зарубежный опыт, СССР начал разработку отечественных дизель-поездов.",
+                Category = NoteCategory.Work,
+                Created = new DateTime(2021, 1, 5),
+                Modified = new DateTime(2021, 1, 25)
+            });
+            notSortProject.Notes.Add(new Note()
+            {
+                Name = "Д1 — серия дизель-поездов",
+                Text = "Дизель-поезд базовой составности состоит из двух головных моторных вагонов и двух промежуточных прицепных вагонов; " +
+                       "также может эксплуатироваться в пятивагонной и шестивагонной составности с тремя и четырьмя прицепными вагонами.",
+                Category = NoteCategory.House,
+                Created = new DateTime(2021, 2, 6),
+                Modified = new DateTime(2021, 2, 26)
+            });
+            sortProject.Notes.Add(new Note()
+            {
+                Name = "Д1 — серия дизель-поездов",
+                Text = "Дизель-поезд базовой составности состоит из двух головных моторных вагонов и двух промежуточных прицепных вагонов; " +
+                       "также может эксплуатироваться в пятивагонной и шестивагонной составности с тремя и четырьмя прицепными вагонами.",
+                Category = NoteCategory.House,
+                Created = new DateTime(2021, 2, 6),
+                Modified = new DateTime(2021, 2, 26)
+            });
+            sortProject.Notes.Add(new Note()
+            {
+                Name = "ДР1 — серия советских дизель-поездов",
+                Text = "В начале 60-х на железные дороги СССР поступили дизель-поезда серии Д венгерского производства." +
+                       " Изучив зарубежный опыт, СССР начал разработку отечественных дизель-поездов.",
+                Category = NoteCategory.Work,
+                Created = new DateTime(2021, 1, 5),
+                Modified = new DateTime(2021, 1, 25)
+            });
+
+            // Act
+            var sortedList = notSortProject.SortList();
+
+            // Assert
+            NUnit.Framework.Assert.AreEqual(sortedList.ToString(), sortProject.Notes.ToString());
+        }
+
+
+        [Test]
+        public void SortListСategory_NotSorList_SortList()
+        {
+            // Setup
+            var notSortProject = new Project();
+            var sortProject = new Project();
+            notSortProject.Notes.Add(new Note()
+            {
+                Name = "ДР1 — серия советских дизель-поездов",
+                Text = "В начале 60-х на железные дороги СССР поступили дизель-поезда серии Д венгерского производства." +
+                       " Изучив зарубежный опыт, СССР начал разработку отечественных дизель-поездов.",
+                Category = NoteCategory.Work,
+                Created = new DateTime(2021, 1, 5),
+                Modified = new DateTime(2021, 1, 25)
+            });
+            notSortProject.Notes.Add(new Note()
+            {
+                Name = "Д1 — серия дизель-поездов",
+                Text = "Дизель-поезд базовой составности состоит из двух головных моторных вагонов и двух промежуточных прицепных вагонов; " +
+                       "также может эксплуатироваться в пятивагонной и шестивагонной составности с тремя и четырьмя прицепными вагонами.",
+                Category = NoteCategory.House,
+                Created = new DateTime(2021, 2, 6),
+                Modified = new DateTime(2021, 2, 26)
+            });
+            sortProject.Notes.Add(new Note()
+            {
+                Name = "ДР1 — серия советских дизель-поездов",
+                Text = "В начале 60-х на железные дороги СССР поступили дизель-поезда серии Д венгерского производства." +
+                       " Изучив зарубежный опыт, СССР начал разработку отечественных дизель-поездов.",
+                Category = NoteCategory.Work,
+                Created = new DateTime(2021, 1, 5),
+                Modified = new DateTime(2021, 1, 25)
+            });
+            var sortCategory = NoteCategory.Work;
+
+            // Act
+            var sortedList = notSortProject.SortList(sortCategory);
+
+            // Assert
+            NUnit.Framework.Assert.AreEqual(sortedList.ToString(), sortProject.Notes.ToString());
+        }
+
+        [Test]
+        public void SelectIndex_GoodSelectIndex_SameSelectIndex()
+        {
+            // Setup
+            var sourceSelectIndex = 1;
+            var actualProject = new Project();
+            var expectedSelectIndex = sourceSelectIndex;
+
+            // Act
+            actualProject.SelectNote = sourceSelectIndex;
+
+            // Assert
+            NUnit.Framework.Assert.AreEqual(expectedSelectIndex, actualProject.SelectNote);
+        }
+
+
     }
 }
 

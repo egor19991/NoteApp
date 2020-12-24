@@ -73,12 +73,11 @@ namespace NoteAppUI
 
         private void TitleTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (TitleTextBox.Text.Length > 60)
+            if (TitleTextBox.Text.Length > 50)
             {
                 TitleTextBox.BackColor = Color.Red;
                 TitleExeceptionLabel.Text = "Max length 50";
                 TitleExeceptionLabel.ForeColor = Color.Red;
-                //TitleTextBox.Text = TitleTextBox.Text.Substring(0, 50);
             }
         }
     }

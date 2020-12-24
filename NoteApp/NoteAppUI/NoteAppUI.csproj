@@ -33,6 +33,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons8-note-48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -117,5 +123,22 @@
   <ItemGroup>
     <None Include="Resources\icons8-Trash-24.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons8-note-48.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>cd $(SolutionDir)InstallScripts
+rmdir /s /q $(SolutionDir)InstallScripts\Release 
+mkdir $(SolutionDir)InstallScripts\Release
+rmdir /s /q $(SolutionDir)InstallScripts\Installers
+mkdir $(SolutionDir)InstallScripts\Installers
+xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)InstallScripts\Release\ 
+xcopy $(ProjectDir)$(OutDir)*.exe $(SolutionDir)InstallScripts\Release\
+"D:\Program Files\Inno Setup 6\ISCC.exe" "$(SolutionDir)InstallScripts\installer.iss"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -108,7 +108,7 @@ namespace NoteApp.UnitTests
         public void DefaultPath_Empty_ReturnSameDefaultPath()
         {
             // Setup
-            var expectedDefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\json.txt";
+            var expectedDefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\NoteApp.notes";
 
             //  Act
             var actualDefaultPath = ProjectManager.DefaultPath;

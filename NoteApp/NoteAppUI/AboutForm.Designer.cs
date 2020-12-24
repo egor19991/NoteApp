@@ -176,8 +176,10 @@ namespace NoteAppUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(380, 330);
+            this.MinimumSize = new System.Drawing.Size(380, 330);
             this.Name = "AboutForm";
-            this.Text = "AboutForm";
+            this.Text = "About";
             this.ResumeLayout(false);
             this.PerformLayout();
 
