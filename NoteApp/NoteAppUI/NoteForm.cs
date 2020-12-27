@@ -13,9 +13,15 @@ namespace NoteAppUI
 {
     public partial class NoteForm : Form
     {
+        /// <summary>
+        /// Переменная для хранения заметок
+        /// </summary>
         private Note _note;
 
-        public Note NNote
+        /// <summary>
+        /// Поле для передачи зметок между формами
+        /// </summary>
+        public Note @Note
         {
             get
             {
@@ -71,14 +77,6 @@ namespace NoteAppUI
             this.Close();
         }
 
-        private void TitleTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (TitleTextBox.Text.Length > 50)
-            {
-                TitleTextBox.BackColor = Color.Red;
-                TitleExeceptionLabel.Text = "Max length 50";
-                TitleExeceptionLabel.ForeColor = Color.Red;
-            }
-        }
+        private void TitleTextBox_TextChanged(object sender, EventArgs e) {}
     }
 }

@@ -91,13 +91,13 @@ namespace NoteAppUI
             var selectedIndex = NoteListBox.SelectedIndex;
             var selectedNote = _sortedList[selectedIndex];
             var edit = new NoteForm(); 
-            edit.NNote = selectedNote;
+            edit.@Note = selectedNote;
             edit.ShowDialog();
             if (edit.DialogResult == DialogResult.OK)
             {
                 //Индекс заметки в файле проекта
                 var projectIndex = _project.Notes.IndexOf(selectedNote);
-                var updatedData = edit.NNote;
+                var updatedData = edit.@Note;
                 NoteListBox.Items.RemoveAt(selectedIndex);
                 _project.Notes.RemoveAt(projectIndex);
                 _project.Notes.Insert(projectIndex, updatedData);
@@ -146,11 +146,11 @@ namespace NoteAppUI
         {
             Note note = new Note();
             var add = new NoteForm();
-            add.NNote = note;
+            add.@Note = note;
             add.ShowDialog();
             if (add.DialogResult == DialogResult.OK)
             {
-                var addData = add.NNote;
+                var addData = add.@Note;
                 _project.Notes.Add(addData);
                 ChangeCategory();
                 ProjectManager.SaveToFile(_project,ProjectManager.DefaultPath);

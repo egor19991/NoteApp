@@ -102,9 +102,6 @@ namespace NoteAppUI
             // 
             // CreatedNoteDateTimePicker
             // 
-            this.CreatedNoteDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.CreatedNoteDateTimePicker.Enabled = false;
             this.CreatedNoteDateTimePicker.Location = new System.Drawing.Point(72, 71);
             this.CreatedNoteDateTimePicker.Name = "CreatedNoteDateTimePicker";
@@ -144,9 +141,7 @@ namespace NoteAppUI
             // 
             // OK
             // 
-            this.OK.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OK.Location = new System.Drawing.Point(467, 484);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(74, 23);
@@ -157,9 +152,7 @@ namespace NoteAppUI
             // 
             // Cancel
             // 
-            this.Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Cancel.Location = new System.Drawing.Point(558, 484);
             this.Cancel.Name = "Cancel";
             this.Cancel.Size = new System.Drawing.Size(74, 23);
@@ -194,7 +187,7 @@ namespace NoteAppUI
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.Title);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(660, 550);
+            this.MinimumSize = new System.Drawing.Size(660, 550);
             this.Name = "NoteForm";
             this.Text = "Add/Edit Note";
             this.ResumeLayout(false);

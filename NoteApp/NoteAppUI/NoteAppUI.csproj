@@ -158,14 +158,14 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd $(SolutionDir)InstallScripts
-rmdir /s /q $(SolutionDir)InstallScripts\Release 
-mkdir $(SolutionDir)InstallScripts\Release
-rmdir /s /q $(SolutionDir)InstallScripts\Installers
-mkdir $(SolutionDir)InstallScripts\Installers
-xcopy $(ProjectDir)$(OutDir)*.dll $(SolutionDir)InstallScripts\Release\ 
-xcopy $(ProjectDir)$(OutDir)*.exe $(SolutionDir)InstallScripts\Release\
-"$(SolutionDir)"packages\Tools.InnoSetup.6.0.2.1\tools\ISCC.exe "$(SolutionDir)InstallScripts\installer.iss"</PostBuildEvent>
+    <PostBuildEvent>cd "$(SolutionDir)InstallScripts"
+rmdir /s /q "$(SolutionDir)InstallScripts\Release"
+mkdir "$(SolutionDir)InstallScripts\Release"
+rmdir /s /q "$(SolutionDir)InstallScripts\Installers"
+mkdir "$(SolutionDir)InstallScripts\Installers"
+xcopy "$(ProjectDir)$(OutDir)*.dll" "$(SolutionDir)InstallScripts\Release\"
+xcopy "$(ProjectDir)$(OutDir)*.exe" "$(SolutionDir)InstallScripts\Release\"
+"$(SolutionDir)packages\Tools.InnoSetup.6.0.2.1\tools\ISCC.exe" "$(SolutionDir)InstallScripts\installer.iss"</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
