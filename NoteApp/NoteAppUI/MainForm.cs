@@ -39,27 +39,10 @@ namespace NoteAppUI
             if (_project.Notes.Count != 0)
             {
                 var selectedItem = _project.Notes[_project.SelectNote];
-                this.NameNoteLabel.Text = selectedItem.Name;
-                this.CategoryTextLabel.Text = selectedItem.Category.ToString();
-                this.NoteTextBox.Text = selectedItem.Text;
-                this.CreatedDateTimePicker.Value = selectedItem.Created;
-                this.ModifiedDateTimePicker.Value = selectedItem.Modified;
+                UpdateFormFields(selectedItem);
             }
         }
         
-        private void Form1_Load(object sender, EventArgs e) { }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.Show();
-        }
-
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ChangeCategory();
-        }
-
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (NoteListBox.SelectedIndex == -1)
@@ -70,11 +53,7 @@ namespace NoteAppUI
             var  selectedItem = _sortedList[NoteListBox.SelectedIndex];
             //Элемент листа ищется по названию ListBox
             //var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
-            this.NameNoteLabel.Text = selectedItem.Name;
-            this.CategoryTextLabel.Text = selectedItem.Category.ToString();
-            this.NoteTextBox.Text = selectedItem.Text; 
-            this.CreatedDateTimePicker.Value = selectedItem.Created;
-            this.ModifiedDateTimePicker.Value = selectedItem.Modified;
+            UpdateFormFields(selectedItem);
             _project.SelectNote = _project.Notes.IndexOf(selectedItem);
         }
 
@@ -101,11 +80,7 @@ namespace NoteAppUI
                 NoteListBox.Items.RemoveAt(selectedIndex);
                 _project.Notes.RemoveAt(projectIndex);
                 _project.Notes.Insert(projectIndex, updatedData);
-                this.NameNoteLabel.Text = updatedData.Name;
-                this.CategoryTextLabel.Text = updatedData.Category.ToString();
-                this.NoteTextBox.Text = updatedData.Text;
-                this.CreatedDateTimePicker.Value = updatedData.Created;
-                this.ModifiedDateTimePicker.Value = updatedData.Modified;
+                UpdateFormFields(updatedData);
                 NoteListBox.Items.Insert(selectedIndex, updatedData.Name);
             }
         }
@@ -128,14 +103,17 @@ namespace NoteAppUI
                 var projectIndex = _project.Notes.IndexOf(selectedNote);
                 NoteListBox.Items.RemoveAt(selectedIndex);
                 _project.Notes.RemoveAt(projectIndex);
-                this.NameNoteLabel.Text = "";
-                this.CategoryTextLabel.Text = "";
-                this.NoteTextBox.Text = "";
-                this.CreatedDateTimePicker.Value = DateTime.Now;
-                this.ModifiedDateTimePicker.Value = DateTime.Now;
+                CleanFormFields();
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
                 ChangeCategory();
-                _project.SelectNote = _project.Notes.IndexOf(_sortedList[0]);
+                if (_project.Notes.Count != 0)
+                {
+                    _project.SelectNote = _project.Notes.IndexOf(_sortedList[0]);
+                }
+                else
+                {
+                    _project.SelectNote = 0;
+                }
             }
         }
 
@@ -186,6 +164,30 @@ namespace NoteAppUI
                     NoteListBox.Items.Add(item.Name);
                 }
             }
+        }
+
+        /// <summary>
+        /// Метод обновления данных в полях отображения заметки
+        /// </summary>
+        private void UpdateFormFields(Note _sourceNote)
+        {
+            this.NameNoteLabel.Text = _sourceNote.Name;
+            this.CategoryTextLabel.Text = _sourceNote.Category.ToString();
+            this.NoteTextBox.Text = _sourceNote.Text;
+            this.CreatedDateTimePicker.Value = _sourceNote.Created;
+            this.ModifiedDateTimePicker.Value = _sourceNote.Modified;
+        }
+
+        /// <summary>
+        /// Метод очистки данных в полях отображения заметки
+        /// </summary>
+        private void CleanFormFields()
+        {
+            this.NameNoteLabel.Text = "";
+            this.CategoryTextLabel.Text = "";
+            this.NoteTextBox.Text = "";
+            this.CreatedDateTimePicker.Value = DateTime.Now;
+            this.ModifiedDateTimePicker.Value = DateTime.Now;
         }
 
         private void CloseForm()
@@ -240,6 +242,19 @@ namespace NoteAppUI
             {
                 RemoveNote();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e) { }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeCategory();
         }
     }
 }
