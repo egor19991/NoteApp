@@ -55,7 +55,7 @@
     <ApplicationIcon>icons8-note-48.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

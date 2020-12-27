@@ -202,7 +202,6 @@ namespace NoteAppUI
             }
             //Поиск элемента по индексу ListsBox
             var selectedItem = _viewedList[NoteListBox.SelectedIndex];
-            //Элемент листа ищется по названию ListBox
             //var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
             UpdateFormFields(selectedItem);
             _project.SelectNote = _project.Notes.IndexOf(selectedItem);

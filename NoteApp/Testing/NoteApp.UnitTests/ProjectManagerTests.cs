@@ -38,14 +38,19 @@ namespace NoteApp.UnitTests
             return sourceProject;
         }
 
+        public string testPath()
+        {
+            var location = Assembly.GetExecutingAssembly().Location;
+            return Path.GetDirectoryName(location) + @"\TestData";
+        }
+
 
         [Test]
         public void SaveToFile_CorrectProject_FileSavedCorrectly()
         {
             // Setup
             var sourceProject = PrepareProject();
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = testPath();
             var actualFilename = testDataFolder + @"\actualProject.json";
             var expectedFilename = testDataFolder + @"\expectedProject.json";
 
@@ -71,8 +76,7 @@ namespace NoteApp.UnitTests
         {
             // Setup
             var sourceProject = PrepareProject();
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = testPath();
             var expectedFilename = testDataFolder + @"\expectedProject.json";
             
             //  Act
@@ -89,8 +93,7 @@ namespace NoteApp.UnitTests
         {
             // Setup
             var sourceProject = new Project();
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = testPath();
             var expectedFilename = testDataFolder + @"\noCorectedProject.json";
 
             //  Act
@@ -104,8 +107,7 @@ namespace NoteApp.UnitTests
 
 
         [Test]
-        //!!!! Не знаю как правильно назвать тестирование пути по умолчанию
-        public void DefaultPath_Empty_ReturnSameDefaultPath()
+        public void DefaultPath_Empty_ReturnDefaultPath()
         {
             // Setup
             var expectedDefaultPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\NoteApp.notes";
