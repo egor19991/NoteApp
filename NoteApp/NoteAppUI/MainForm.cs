@@ -22,7 +22,7 @@ namespace NoteAppUI
         /// <summary>
         /// Переменная хранит отсортированный лист
         /// </summary>
-        private List<Note> _sortedList;
+        private List<Note> _viewedList;
 
         public MainForm()
         {
@@ -35,29 +35,15 @@ namespace NoteAppUI
             }
             CategoryComboBox.Items.Add("All");
             CategoryComboBox.SelectedItem = "All";
-            _sortedList = _project.SortList();
+            _viewedList = _project.SortList();
             if (_project.Notes.Count != 0)
             {
                 var selectedItem = _project.Notes[_project.SelectNote];
                 UpdateFormFields(selectedItem);
+                NoteListBox.SelectedIndex = _viewedList.IndexOf(selectedItem);
             }
         }
         
-        private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (NoteListBox.SelectedIndex == -1)
-            {
-                return;
-            }
-            //Поиск элемента по индексу ListsBox
-            var  selectedItem = _sortedList[NoteListBox.SelectedIndex];
-            //Элемент листа ищется по названию ListBox
-            //var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
-            UpdateFormFields(selectedItem);
-            _project.SelectNote = _project.Notes.IndexOf(selectedItem);
-        }
-
-
         /// <summary>
         /// Метод для изменения выбранной заметки
         /// </summary>
@@ -68,7 +54,7 @@ namespace NoteAppUI
                 return;
             }
             var selectedIndex = NoteListBox.SelectedIndex;
-            var selectedNote = _sortedList[selectedIndex];
+            var selectedNote = _viewedList[selectedIndex];
             var edit = new NoteForm(); 
             edit.@Note = selectedNote;
             edit.ShowDialog();
@@ -82,6 +68,7 @@ namespace NoteAppUI
                 _project.Notes.Insert(projectIndex, updatedData);
                 UpdateFormFields(updatedData);
                 NoteListBox.Items.Insert(selectedIndex, updatedData.Name);
+                ChangeCategory();
             }
         }
 
@@ -95,7 +82,7 @@ namespace NoteAppUI
                 return;
             }
             var selectedIndex = NoteListBox.SelectedIndex;
-            var selectedNote = _sortedList[selectedIndex];
+            var selectedNote = _viewedList[selectedIndex];
             DialogResult result = MessageBox.Show(("«Do you really want to remove this note: " + selectedNote.Name),  "Remove Note",
                 MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
@@ -105,15 +92,15 @@ namespace NoteAppUI
                 _project.Notes.RemoveAt(projectIndex);
                 CleanFormFields();
                 ProjectManager.SaveToFile(_project, ProjectManager.DefaultPath);
-                ChangeCategory();
-                if (_project.Notes.Count != 0)
+                if (_project.Notes.Count > 0)
                 {
-                    _project.SelectNote = _project.Notes.IndexOf(_sortedList[0]);
+                    _project.SelectNote = _project.Notes.IndexOf(_project.SortList()[0]);
                 }
                 else
                 {
                     _project.SelectNote = 0;
                 }
+                ChangeCategory();
             }
         }
 
@@ -148,20 +135,37 @@ namespace NoteAppUI
             {
                 NoteCategory selectedCategory;
                 selectedCategory = (NoteCategory)CategoryComboBox.SelectedItem;
-                _sortedList = _project.SortList(selectedCategory);
+                _viewedList = _project.SortList(selectedCategory);
                 NoteListBox.Items.Clear();
-                foreach (var item in _sortedList)
+                foreach (var item in _viewedList)
                 {
                     NoteListBox.Items.Add(item.Name);
+                }
+                if (_project.Notes.Count > 0 && _project.Notes[_project.SelectNote].Category == selectedCategory)
+                {
+                    var selectedItem = _project.Notes[_project.SelectNote];
+                    UpdateFormFields(selectedItem);
+                    NoteListBox.SelectedIndex = _viewedList.IndexOf(selectedItem);
+                }
+                else
+                {
+                    CleanFormFields();
                 }
             }
             else
             {
                 NoteListBox.Items.Clear();
-                _sortedList = _project.SortList();
-                foreach (var item in _sortedList)
+                _viewedList = _project.SortList();
+                foreach (var item in _viewedList)
                 {
                     NoteListBox.Items.Add(item.Name);
+                }
+
+                if (_project.Notes.Count > 0)
+                {
+                    var selectedItem = _project.Notes[_project.SelectNote];
+                    UpdateFormFields(selectedItem);
+                    NoteListBox.SelectedIndex = _viewedList.IndexOf(selectedItem);
                 }
             }
         }
@@ -188,6 +192,20 @@ namespace NoteAppUI
             this.NoteTextBox.Text = "";
             this.CreatedDateTimePicker.Value = DateTime.Now;
             this.ModifiedDateTimePicker.Value = DateTime.Now;
+        }
+
+        private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NoteListBox.SelectedIndex == -1)
+            {
+                return;
+            }
+            //Поиск элемента по индексу ListsBox
+            var selectedItem = _viewedList[NoteListBox.SelectedIndex];
+            //Элемент листа ищется по названию ListBox
+            //var selectedItem = _project.Notes.Find(x => x.Name.Contains(NoteListBox.SelectedItem.ToString()));
+            UpdateFormFields(selectedItem);
+            _project.SelectNote = _project.Notes.IndexOf(selectedItem);
         }
 
         private void CloseForm()
@@ -244,7 +262,9 @@ namespace NoteAppUI
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e) { }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {

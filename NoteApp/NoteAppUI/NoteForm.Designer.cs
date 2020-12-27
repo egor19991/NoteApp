@@ -82,6 +82,7 @@ namespace NoteAppUI
             // 
             // CategoryComboBox
             // 
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(72, 39);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -136,6 +137,7 @@ namespace NoteAppUI
             this.NoteTextBox.Location = new System.Drawing.Point(13, 103);
             this.NoteTextBox.Multiline = true;
             this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.NoteTextBox.Size = new System.Drawing.Size(619, 375);
             this.NoteTextBox.TabIndex = 8;
             // 
