@@ -22,7 +22,7 @@ namespace NoteAppUI
         /// <summary>
         /// Переменная хранит отсортированный лист
         /// </summary>
-        private List<Note> _viewedNote;
+        private List<Note> _viewedNotes;
 
         public MainForm()
         {
@@ -35,12 +35,12 @@ namespace NoteAppUI
             }
             CategoryComboBox.Items.Add("All");
             CategoryComboBox.SelectedItem = "All";
-            _viewedNote = _project.SortList();
+            _viewedNotes = _project.SortList();
             if (_project.Notes.Count != 0)
             {
                 var selectedItem = _project.Notes[_project.SelectNote];
                 UpdateFormFields(selectedItem);
-                NoteListBox.SelectedIndex = _viewedNote.IndexOf(selectedItem);
+                NoteListBox.SelectedIndex = _viewedNotes.IndexOf(selectedItem);
             }
         }
         
@@ -54,7 +54,7 @@ namespace NoteAppUI
                 return;
             }
             var selectedIndex = NoteListBox.SelectedIndex;
-            var selectedNote = _viewedNote[selectedIndex];
+            var selectedNote = _viewedNotes[selectedIndex];
             var edit = new NoteForm(); 
             edit.@Note = selectedNote;
             edit.ShowDialog();
@@ -82,7 +82,7 @@ namespace NoteAppUI
                 return;
             }
             var selectedIndex = NoteListBox.SelectedIndex;
-            var selectedNote = _viewedNote[selectedIndex];
+            var selectedNote = _viewedNotes[selectedIndex];
             DialogResult result = MessageBox.Show(("Do you really want to remove this note: " + selectedNote.Name),  "Remove Note",
                 MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
@@ -136,9 +136,9 @@ namespace NoteAppUI
             {
                 NoteCategory selectedCategory;
                 selectedCategory = (NoteCategory)CategoryComboBox.SelectedItem;
-                _viewedNote = _project.SortList(selectedCategory);
+                _viewedNotes = _project.SortList(selectedCategory);
                 NoteListBox.Items.Clear();
-                foreach (var item in _viewedNote)
+                foreach (var item in _viewedNotes)
                 {
                     NoteListBox.Items.Add(item.Name);
                 }
@@ -146,7 +146,7 @@ namespace NoteAppUI
                 {
                     var selectedItem = _project.Notes[_project.SelectNote];
                     UpdateFormFields(selectedItem);
-                    NoteListBox.SelectedIndex = _viewedNote.IndexOf(selectedItem);
+                    NoteListBox.SelectedIndex = _viewedNotes.IndexOf(selectedItem);
                 }
                 else
                 {
@@ -156,8 +156,8 @@ namespace NoteAppUI
             else
             {
                 NoteListBox.Items.Clear();
-                _viewedNote = _project.SortList();
-                foreach (var item in _viewedNote)
+                _viewedNotes = _project.SortList();
+                foreach (var item in _viewedNotes)
                 {
                     NoteListBox.Items.Add(item.Name);
                 }
@@ -166,7 +166,7 @@ namespace NoteAppUI
                 {
                     var selectedItem = _project.Notes[_project.SelectNote];
                     UpdateFormFields(selectedItem);
-                    NoteListBox.SelectedIndex = _viewedNote.IndexOf(selectedItem);
+                    NoteListBox.SelectedIndex = _viewedNotes.IndexOf(selectedItem);
                 }
             }
         }
@@ -201,7 +201,7 @@ namespace NoteAppUI
             {
                 return;
             }
-            var selectedItem = _viewedNote[NoteListBox.SelectedIndex];
+            var selectedItem = _viewedNotes[NoteListBox.SelectedIndex];
             UpdateFormFields(selectedItem);
             _project.SelectNote = _project.Notes.IndexOf(selectedItem);
         }
