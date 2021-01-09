@@ -158,8 +158,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd "$(SolutionDir)InstallScripts"
-rmdir /s /q "$(SolutionDir)InstallScripts\Release"
+    <PostBuildEvent>rmdir /s /q "$(SolutionDir)InstallScripts\Release"
 mkdir "$(SolutionDir)InstallScripts\Release"
 rmdir /s /q "$(SolutionDir)InstallScripts\Installers"
 mkdir "$(SolutionDir)InstallScripts\Installers"
