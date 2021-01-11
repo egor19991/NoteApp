@@ -9,7 +9,7 @@ namespace NoteApp.UnitTests
     public class NoteTests
     {
         [Test]
-        public void Name_GoodName_ReternsSameName()
+        public void Name_GoodName_ReturnsSameName()
         {
             // Setup
             var note = new Note();
@@ -43,7 +43,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Name_EmptyName_ReternsDefaultName()
+        public void Name_EmptyName_ReturnsDefaultName()
         {
             // Setup
             var note = new Note();
@@ -59,7 +59,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Text_GoodText_ReternsSameText()
+        public void Text_GoodText_ReturnsSameText()
         {
             // Setup
             var note = new Note();
@@ -76,7 +76,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Text_EmptyText_ReternsDefaultText()
+        public void Text_EmptyText_ReturnsDefaultText()
         {
             // Setup
             var note = new Note();
@@ -92,7 +92,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Category_GoodCategory_ReternsSameCategory()
+        public void Category_GoodCategory_ReturnsSameCategory()
         {
             // Setup
             var note = new Note();
@@ -108,7 +108,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Created_GoodDate_ReternsSameDate()
+        public void Created_GoodDate_ReturnsSameDate()
         {
             // Setup
             var note = new Note();
@@ -124,7 +124,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Modified_GoodDate_ReternsSameDate()
+        public void Modified_GoodDate_ReturnsSameDate()
         {
             // Setup
             var note = new Note();
@@ -140,7 +140,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void InterfaceNoteNameTextCategory_GoodData_ReternsSameData()
+        public void InterfaceNoteNameTextCategory_GoodData_ReturnsSameData()
         {
             // Setup
             var sourceName = "ВЛ10 — советский грузопассажирский электровоз";
@@ -164,7 +164,7 @@ namespace NoteApp.UnitTests
         }
 
         [Test]
-        public void Clone_GoodData_ReternsSameData()
+        public void Clone_GoodData_ReturnsSameData()
         {
             // Setup
             var sourceName = "ЭД4 — серия электропоездов постоянного тока";
